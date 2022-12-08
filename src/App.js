@@ -8,7 +8,8 @@ import ViewUsersPage from "./pages/ViewUsersPage";
 import UpdateUserPage from "./pages/UpdateUserPage";
 import ViewDevicePage from "./pages/ViewDevicePage";
 import UpdateDevicePage from "./pages/UpdateDevicePage";
-
+import ClientPage from "./pages/ClientPage";
+import ViewDeviceForClientPage from "./pages/ViewDeviceForClientPage";
 function App() {
   return (
     <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -23,6 +24,11 @@ function App() {
             <Route path="/update-page" element={<UpdateUserPage />} />
             <Route path="/view-device" element={<ViewDevicePage />} />
             <Route path="/update-page-device" element={<UpdateDevicePage />} />
+            <Route path="/client-page" element={<ClientPage />} />
+            <Route
+              path="/client-devices"
+              element={<ViewDeviceForClientPage />}
+            />
           </Routes>
         </BrowserRouter>
       </div>

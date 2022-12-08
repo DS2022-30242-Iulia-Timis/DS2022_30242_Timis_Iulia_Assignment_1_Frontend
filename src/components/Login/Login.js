@@ -18,14 +18,20 @@ export default function Login() {
   const goToAdminPage = () => {
     window.location.href = "admin-page";
   };
+  const goToClientPage = () => {
+    window.location.href = "/client-page";
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let res = authenticateUser().then((result) => {
-      console.log(result.data);
+      console.log(result.data.role === "CLIENT");
       if (result.data.role === "ADMINISTRATOR") {
         sessionStorage.setItem("admUID", result.data.id);
         goToAdminPage();
+      } else if (result.data.role === "CLIENT") {
+        sessionStorage.setItem("clientUID", result.data.id);
+        goToClientPage();
       }
     });
   };

@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from "react";
 import deviceService from "../services/deviceService";
+import measurementsService from "../services/measurementsService";
 import "./ViewDevicePage.css";
 import LoginPage from "./Login";
 
-function ViewDevicePage() {
+function ViewDeviceForClientPage() {
   const [allDevices, setDevices] = useState([]);
   useEffect(() => {
     getDevices();
   }, []);
-  const goToAdminPage = () => {
-    window.location.href = "admin-page";
+  const [allMeasurements, setMeasurements] = useState([]);
+  useEffect(() => {
+    getMeasurementss();
+  }, []);
+  const goToClientPage = () => {
+    window.location.href = "client-page";
   };
 
   async function getDevices() {
     let datas = await deviceService.getItems();
     setDevices(datas.data);
     console.log(datas.data);
+  }
+
+  async function getMeasurementss() {
+    let datam = await measurementsService.getMeasurements();
+    setMeasurements(datam.data);
+    console.log(datam.data);
   }
 
   return (
@@ -45,8 +56,32 @@ function ViewDevicePage() {
             })}
           </tbody>
         </table>
+
         <div>
-          <button className="backBtn" onClick={goToAdminPage}>
+          <table className="table-measurements">
+            <thead>
+              <tr>
+                <th>item_id</th>
+                <th>consumption</th>
+                <th>timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allMeasurements.map((dataa) => {
+                return (
+                  <tr key={dataa.id}>
+                    <td>{dataa.id}</td>
+                    <td>{dataa.consumption}</td>
+                    <td>{dataa.timestamp}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <button className="backBtn" onClick={goToClientPage}>
             Go back
           </button>
         </div>
@@ -54,4 +89,6 @@ function ViewDevicePage() {
     </div>
   );
 }
-export default sessionStorage.getItem("admUID") ? ViewDevicePage : LoginPage;
+export default sessionStorage.getItem("clientUID")
+  ? ViewDeviceForClientPage
+  : LoginPage;
