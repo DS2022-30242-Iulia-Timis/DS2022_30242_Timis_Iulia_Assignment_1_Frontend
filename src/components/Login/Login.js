@@ -28,9 +28,11 @@ export default function Login() {
       console.log(result.data.role === "CLIENT");
       if (result.data.role === "ADMINISTRATOR") {
         sessionStorage.setItem("admUID", result.data.id);
+        sessionStorage.setItem("username", loginState.eusername);
         goToAdminPage();
       } else if (result.data.role === "CLIENT") {
         sessionStorage.setItem("clientUID", result.data.id);
+        sessionStorage.setItem("username", loginState.eusername);
         goToClientPage();
       }
     });

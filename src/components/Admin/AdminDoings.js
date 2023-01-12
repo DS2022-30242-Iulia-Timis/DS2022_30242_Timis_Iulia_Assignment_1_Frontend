@@ -98,6 +98,16 @@ export default function AdminDoings() {
             View devices
           </button>
         </div>
+        <div>
+          <button
+            className="chatBtn"
+            onClick={() => {
+              window.location.href = "chat-room";
+            }}
+          >
+            Chat
+          </button>
+        </div>
         <button className="backBtn" onClick={goToLoginPage}>
           Go back
         </button>

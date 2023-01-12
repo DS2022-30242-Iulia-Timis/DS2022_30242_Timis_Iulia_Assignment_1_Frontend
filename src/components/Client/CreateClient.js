@@ -1,6 +1,7 @@
 import "../User/createUserPage.css";
 import "../Device/createDevicePage.css";
 import "./CreateClient.css";
+import "../Chat/chatRoom.css";
 
 import adminService from "../../services/adminService";
 import deviceService from "../../services/deviceService";
@@ -32,6 +33,16 @@ export default function CreateClient() {
             }}
           >
             View devices
+          </button>
+        </div>
+        <div>
+          <button
+            className="chatBtn"
+            onClick={() => {
+              window.location.href = "chat-room";
+            }}
+          >
+            Chat
           </button>
         </div>
         <button className="backBtn" onClick={goToLoginPage}>

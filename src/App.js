@@ -10,10 +10,12 @@ import ViewDevicePage from "./pages/ViewDevicePage";
 import UpdateDevicePage from "./pages/UpdateDevicePage";
 import ClientPage from "./pages/ClientPage";
 import ViewDeviceForClientPage from "./pages/ViewDeviceForClientPage";
+import ChatPage from "./pages/ChatPage";
+
 function App() {
   return (
-    <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="flex items-center justify-center ">
+      <div style={{ padding: "50px" }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginPage />} />
@@ -29,6 +31,7 @@ function App() {
               path="/client-devices"
               element={<ViewDeviceForClientPage />}
             />
+            <Route path="chat-room" element={<ChatPage />} />
           </Routes>
         </BrowserRouter>
       </div>
